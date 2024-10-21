@@ -1,0 +1,103 @@
+.fastgrowth-countdown {
+  --countdown-font-size: 1.125rem;
+  --countdown-padding-y: 1.5rem;
+  --countdown-padding-x: 0;
+  --countdown-number-font-size: var(--se-fs-5);
+  --countdown-number-line-height: 1.5;
+  --countdown-number-padding: .1875rem .40625rem;
+  --countdown-number-color: var(--se-primary);
+  --countdown-number-bg: #F0F0F0;
+  --countdown-spacing: .25rem;
+
+  display: block;
+  font-size: var(--countdown-font-size);
+  line-height: 1.2;
+  padding: var(--countdown-padding-y) var(--countdown-padding-x);
+  transition: opacity .15s;
+  &.inactive {
+    opacity: 0;
+  }
+  .d-none {
+    display: none;
+  }
+  .w-auto {
+    width: auto;
+  }
+  .countdown-text {
+    margin-inline-end: .5rem;
+  }
+  .countdown-time-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .countdown-separator {
+    margin-left: var(--countdown-spacing);
+    margin-right: var(--countdown-spacing);
+    opacity: .7;
+  }
+  .countdown-time {
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: .25rem;
+    align-items: center;
+    transition: opacity .15s;
+    &.inactive {
+      opacity: 0;
+    }
+    .countdown-separator {
+      font-weight: 700;
+    }
+    .countdown-label {
+      margin-inline-start: var(--countdown-spacing);
+    }
+    .countdown-number {
+      display: inline-block;
+      font-size: var(--countdown-number-font-size);
+      line-height: var(--countdown-number-line-height);
+      font-weight: 700;
+      padding: var(--countdown-number-padding);
+      color: var(--countdown-number-color);
+      background-color: var(--countdown-number-bg);
+    }
+  }
+
+  &.without-label {
+    .countdown-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &.enlarge-timer {
+    --countdown-font-size: 1.25rem;
+    --countdown-number-font-size: var(--se-fs-3);
+    --countdown-number-line-height: 1.3125;
+    --countdown-number-padding: .3125rem .5rem;
+  }
+
+  &.underneath {
+    --countdown-number-font-size: var(--se-fs-2);
+    --countdown-number-line-height: 1.3125;
+    &.enlarge-timer {
+      --countdown-number-font-size: var(--se-fs-2);
+      --countdown-number-line-height: 1.3125;
+    }
+    .countdown-time-wrapper {
+      flex-direction: column;
+    }
+    .countdown-text {
+      margin-bottom: 1rem;
+      margin-right: 0;
+    }
+    .countdown-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .countdown-label {
+      opacity: .7;
+    }
+  }
+}

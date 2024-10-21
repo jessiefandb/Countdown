@@ -1,0 +1,43 @@
+{
+  "name": "ktc",
+  "version": "1.0.0",
+  "description": "",
+  "license": "UNLICENSED",
+  "scripts": {
+    "develop:style": "sass --watch src/styles/:theme/assets/",
+    "develop:script": "node esbuild.dev.config.mjs",
+    "develop": "yarn run develop:style & yarn run develop:script",
+    "build:style": "sass --style=compressed --stop-on-error --no-source-map src/styles/:theme/assets/",
+    "build:script": "node esbuild.config.js",
+    "build": "yarn run build:style & yarn run build:script && yarn run css-prefix",
+    "css-prefix": "postcss theme/assets/*.css --use autoprefixer --replace --no-map",
+    "lint": "eslint src/ --ext .js,.jsx,.ts,.tsx",
+    "eslint": "./node_modules/.bin/eslint",
+    "eslint:fix": "./node_modules/.bin/eslint --fix"
+  },
+  "author": "",
+  "dependencies": {
+    "@shopify/storefront-api-client": "^0.3.4",
+    "@shopify/theme-currency": "^4.1.1",
+    "@studio-freight/lenis": "^1.0.42",
+    "esbuild": "^0.19.5",
+    "eslint": "^7.32.0 || ^8.2.0",
+    "hogan.js": "^3.0.2",
+    "sass": "^1.71.1",
+    "stylelint": "^16.3.0",
+    "stylelint-config-standard": "^36.0.0",
+    "stylelint-scss": "^6.2.1",
+    "typescript": "^5.4.3"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^7.4.0",
+    "autoprefixer": "^10.4.16",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-config-standard-with-typescript": "^43.0.1",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-promise": "^6.1.1",
+    "postcss": "^8.4.31",
+    "postcss-cli": "^10.1.0"
+  }
+}

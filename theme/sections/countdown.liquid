@@ -1,0 +1,141 @@
+{{ 'fastgrowth-countdown.min.css' | asset_url | stylesheet_tag }}
+{% liquid
+  assign block = section.blocks | where: 'type', 'countdown' | first
+  assign label_underneath = false
+  assign enlarge_timer = false
+  assign without_label = false
+  if block.settings.layout == 'underneath'
+    assign label_underneath = true
+  endif
+  if block.settings.enlarge_timer
+    assign enlarge_timer = true
+  endif
+  unless block.settings.show_time_labels
+    assign without_label = true
+  endunless
+%}
+
+{%- style -%}
+  .fastgrowth-countdown-{{ section.id }} {
+    {% if block.settings.background_color_of_the_numbers != blank %}
+      --countdown-number-bg: {{ block.settings.background_color_of_the_numbers }};
+    {% endif %}
+    {% if block.settings.number_color != blank %}
+      --countdown-number-color: {{ block.settings.number_color }};
+    {% endif %}
+  }
+{%- endstyle -%}
+
+<fastgrowth-countdown class="as-countdown fastgrowth-countdown fastgrowth-countdown-{{ section.id }} {% if label_underneath %} underneath {% endif %} {% if enlarge_timer %} enlarge-timer {% endif %} {% if without_label %}without_label{% endif %} inactive" data-hide="{{ block.settings.hide_timer_when_reaches_0 }}" data-event-time="{{ block.settings.event_time }}">
+  <div class="as-countdown-time countdown-time-wrapper">
+    <div class="as-countdown-text countdown-text" data-text="{{ block.settings.event_text }}"></div>
+    <div class="as-countdown-time-wrap countdown-time">
+      <div class="as-countdown-days-labels countdown-item">
+        <span class="as-countdown-days countdown-number rounded-1">00</span>{%- if block.settings.show_time_labels -%}<span class="countdown-label">Days</span>{%- endif -%}
+      </div>
+      {% if label_underneath or without_label %}
+        <span class="as-countdown-days-labels countdown-separator">:</span>
+      {% endif %}
+
+      <div class="countdown-item {% if label_underneath %}underneath{% endif %}">
+        <span class="as-countdown-hours countdown-number rounded-1">00</span>{% if block.settings.show_time_labels %}<span class="as-days-labels countdown-label">Hrs</span>{% endif %}
+      </div>
+      {% if label_underneath or without_label %}
+        <span class="countdown-separator">:</span>
+      {% endif %}
+
+      <div class="countdown-item {% if label_underneath %}underneath{% endif %}">
+        <span class="as-countdown-minutes countdown-number rounded-1">00</span>{% if block.settings.show_time_labels %}<span class="countdown-label">Mins</span>{% endif %}
+      </div>
+      {% if label_underneath or without_label %}
+        <span class="countdown-separator">:</span>
+      {% endif %}
+
+      <div class="countdown-item {% if label_underneath %}underneath{% endif %}">
+        <span class="as-countdown-seconds countdown-number rounded-1">00</span>{% if block.settings.show_time_labels %}<span class="countdown-label">Secs</span>{% endif %}
+      </div>
+    </div>
+  </div>
+</fastgrowth-countdown>
+
+<script src="{{ 'countdown-index.min.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Countdown",
+  "tag": "section",
+  "settings": [
+  ],
+  "blocks": [
+    {
+      "type": "countdown",
+      "name": "Countdown",
+      "settings": [
+        {
+          "type": "select",
+          "id": "layout",
+          "label": "Layout",
+          "default": "right",
+          "options": [
+            {
+              "value": "right",
+              "label": "Timer on right"
+            },
+            {
+              "value": "underneath",
+              "label": "Timer on underneath"
+            }
+          ]
+        },
+        {
+          "type": "checkbox",
+          "id": "show_time_labels",
+          "label": "Show time labels",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "event_time",
+          "label": "Event time",
+          "info": "Timestamp conversion tool:https://tool.lu/timestamp/, and the units should be seconds."
+        },
+        {
+          "type": "text",
+          "id": "event_text",
+          "label": "Event text"
+        },
+        {
+          "type": "checkbox",
+          "id": "hide_timer_when_reaches_0",
+          "label": "Hide timer when reaches 00:00"
+        },
+        {
+          "type": "header",
+          "content": "Style"
+        },
+        {
+          "type": "checkbox",
+          "id": "enlarge_timer",
+          "label": "Enlarge timer",
+          "default": false
+        },
+        {
+          "type": "color",
+          "id": "number_color",
+          "label": "Number color"
+        },
+        {
+          "type": "color",
+          "id": "background_color_of_the_numbers",
+          "label": "Background color of the numbers"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Countdown"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,7 @@
+{
+  "stylelint.customSyntax": "postcss-scss",
+  "stylelint.validate": [
+      "css",
+      "less"
+  ]
+}

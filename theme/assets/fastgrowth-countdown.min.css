@@ -1,0 +1,99 @@
+.fastgrowth-countdown {
+  --countdown-font-size: 1.125rem;
+  --countdown-padding-y: 1.5rem;
+  --countdown-padding-x: 0;
+  --countdown-number-font-size: var(--se-fs-5);
+  --countdown-number-line-height: 1.5;
+  --countdown-number-padding: .1875rem .40625rem;
+  --countdown-number-color: var(--se-primary);
+  --countdown-number-bg: #F0F0F0;
+  --countdown-spacing: .25rem;
+  display: block;
+  font-size: var(--countdown-font-size);
+  line-height: 1.2;
+  padding: var(--countdown-padding-y) var(--countdown-padding-x);
+  transition: opacity 0.15s;
+}
+.fastgrowth-countdown.inactive {
+  opacity: 0;
+}
+.fastgrowth-countdown .d-none {
+  display: none;
+}
+.fastgrowth-countdown .w-auto {
+  width: auto;
+}
+.fastgrowth-countdown .countdown-text {
+  margin-inline-end: 0.5rem;
+}
+.fastgrowth-countdown .countdown-time-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.fastgrowth-countdown .countdown-separator {
+  margin-left: var(--countdown-spacing);
+  margin-right: var(--countdown-spacing);
+  opacity: 0.7;
+}
+.fastgrowth-countdown .countdown-time {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 0.25rem;
+  align-items: center;
+  transition: opacity 0.15s;
+}
+.fastgrowth-countdown .countdown-time.inactive {
+  opacity: 0;
+}
+.fastgrowth-countdown .countdown-time .countdown-separator {
+  font-weight: 700;
+}
+.fastgrowth-countdown .countdown-time .countdown-label {
+  margin-inline-start: var(--countdown-spacing);
+}
+.fastgrowth-countdown .countdown-time .countdown-number {
+  display: inline-block;
+  font-size: var(--countdown-number-font-size);
+  line-height: var(--countdown-number-line-height);
+  font-weight: 700;
+  padding: var(--countdown-number-padding);
+  color: var(--countdown-number-color);
+  background-color: var(--countdown-number-bg);
+}
+.fastgrowth-countdown.without-label .countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.fastgrowth-countdown.enlarge-timer {
+  --countdown-font-size: 1.25rem;
+  --countdown-number-font-size: var(--se-fs-3);
+  --countdown-number-line-height: 1.3125;
+  --countdown-number-padding: .3125rem .5rem;
+}
+.fastgrowth-countdown.underneath {
+  --countdown-number-font-size: var(--se-fs-2);
+  --countdown-number-line-height: 1.3125;
+}
+.fastgrowth-countdown.underneath.enlarge-timer {
+  --countdown-number-font-size: var(--se-fs-2);
+  --countdown-number-line-height: 1.3125;
+}
+.fastgrowth-countdown.underneath .countdown-time-wrapper {
+  flex-direction: column;
+}
+.fastgrowth-countdown.underneath .countdown-text {
+  margin-bottom: 1rem;
+  margin-right: 0;
+}
+.fastgrowth-countdown.underneath .countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.fastgrowth-countdown.underneath .countdown-label {
+  opacity: 0.7;
+}
+
+/*# sourceMappingURL=fastgrowth-countdown.min.css.map */
